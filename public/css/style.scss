@@ -1,0 +1,31 @@
+@import 'reset';
+
+body {
+  background: black;
+  color: white;
+  font-family: "Courier New";
+  text-align: center;
+}
+
+.inputArea {
+  border: solid #3adb76 1px;
+  margin: 3% 10% 0 10%;
+  padding: 1%;
+}
+
+.text {
+  margin-top: 10%;
+}
+
+.menu {
+  margin-top: 70%;
+  width: 50%
+}
+
+.input {
+  margin-top: 20%;
+}
+
+.toplayer {
+  margin-top: 5%;
+}
