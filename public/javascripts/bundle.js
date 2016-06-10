@@ -66,8 +66,9 @@
 	        value: function hoverHandler() {
 	            document.getElementById("pigeony").addEventListener("mouseenter", function () {
 	                var pigeonName = prompt("Name this pigeon.");
+	                var bustCache = '?' + new Date().getTime();
 	                var XHR = new XMLHttpRequest();
-	                XHR.open('POST', document.url, true);
+	                XHR.open('POST', event.target.dataset.url + bustCache, true);
 	                XHR.setRequestHeader('X-Requested-load', 'XMLHttpRequest0');
 	                XHR.send(pigeonName);
 	                XHR.onload = function () {

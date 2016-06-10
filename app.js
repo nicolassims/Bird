@@ -61,8 +61,10 @@ class app {
         req.on ('data', (chunk) => {
             this.pigeonName += chunk;
         });
+        req.on ('end', () => {
+            this.pigeonName = this.pigeonName + ' the Pigeon';
+        });
     }
-
 }
 
 module.exports = app;
