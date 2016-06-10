@@ -10,13 +10,19 @@ class main {
     }
 
     hoverHandler() {
-        document.getElementById("pigeony").addEventListener("mouseenter", () => {
-            let pigeonName = prompt("Name this pigeon.");
-            let bustCache = '?' + new Date().getTime();
+        document.getElementById('pigeony').addEventListener('click', () => {
+            let pigeonName = prompt('Name this pigeon.');
+            console.log(pigeonName);
+            //let bustCache = '?' + new Date().getTime();
             const XHR = new XMLHttpRequest();
-            XHR.open('POST', event.target.dataset.url + bustCache, true);
-            XHR.setRequestHeader('X-Requested-load', 'XMLHttpRequest0');
+            XHR.open('POST', document.url, true);
+            XHR.setRequestHeader('x-requested-load', 'XMLHttpRequest0');
             XHR.send(pigeonName);
+            XHR.onload = () => {
+                if (XHR.readyState == 4 && XHR.status == 200) {
+                    alert(XHR.responseText);
+                }
+            };
         });
     }
 }

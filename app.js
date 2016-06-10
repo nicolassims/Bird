@@ -25,10 +25,9 @@ class app {
                         res.end(str);
                     }
                 };
-
-                if (req.headers['X-Requested-load'] === 'XMLHttpRequest0') {
-                    if (req.method == 'POST') {
-                        this.loadData(req, res, 0);
+                if (req.method == 'POST') {
+                    if (req.headers['x-requested-load'] === 'XMLHttpRequest0') {
+                        app.loadData(req, res);
                     } else {
                         console.log("[405] " + req.method + " to " + req.url);
                         res.writeHead(405, "Method not supported", { 'Content-Type': 'text/html' });
@@ -43,7 +42,6 @@ class app {
                 } else {
                     app.render('public/views/index.html', 'text/html', httpHandler, 'utf-8');
                 }
-
             }).listen(PORT, function() {
                 console.log('-= Francis Server Listening at http://127.0.0.1:' + PORT + ' =-');
             });
@@ -56,13 +54,14 @@ class app {
         });
     }
 
-    loadData (req, res, whichAjax) {
+    static loadData (req, res) {
+        this.pigeonName = '';
         req.on ('data', (chunk) => {
             this.pigeonName += chunk;
         });
         req.on ('end', () => {
-            this.pigeonName = this.pigeonName + ' the Pigeon';
-            alert(this.pigeonName);
+            this.pigeonName += ' the Pigeon';
+            res.end(this.pigeonName);
         });
     }
 }

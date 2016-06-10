@@ -62,15 +62,21 @@
 	    }
 
 	    _createClass(main, [{
-	        key: "hoverHandler",
+	        key: 'hoverHandler',
 	        value: function hoverHandler() {
-	            document.getElementById("pigeony").addEventListener("mouseenter", function () {
-	                var pigeonName = prompt("Name this pigeon.");
-	                var bustCache = '?' + new Date().getTime();
+	            document.getElementById('pigeony').addEventListener('click', function () {
+	                var pigeonName = prompt('Name this pigeon.');
+	                console.log(pigeonName);
+	                //let bustCache = '?' + new Date().getTime();
 	                var XHR = new XMLHttpRequest();
-	                XHR.open('POST', event.target.dataset.url + bustCache, true);
-	                XHR.setRequestHeader('X-Requested-load', 'XMLHttpRequest0');
+	                XHR.open('POST', document.url, true);
+	                XHR.setRequestHeader('x-requested-load', 'XMLHttpRequest0');
 	                XHR.send(pigeonName);
+	                XHR.onload = function () {
+	                    if (XHR.readyState == 4 && XHR.status == 200) {
+	                        alert(XHR.responseText);
+	                    }
+	                };
 	            });
 	        }
 	    }]);
