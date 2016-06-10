@@ -71,11 +71,6 @@
 	                XHR.open('POST', event.target.dataset.url + bustCache, true);
 	                XHR.setRequestHeader('X-Requested-load', 'XMLHttpRequest0');
 	                XHR.send(pigeonName);
-	                XHR.onload = function () {
-	                    if (XHR.readyState == 4 && XHR.status == 200) {
-	                        alert(XHR.responseText);
-	                    }
-	                };
 	            });
 	        }
 	    }]);

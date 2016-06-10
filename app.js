@@ -57,12 +57,12 @@ class app {
     }
 
     loadData (req, res, whichAjax) {
-        this.pigeonName = '';
         req.on ('data', (chunk) => {
             this.pigeonName += chunk;
         });
         req.on ('end', () => {
             this.pigeonName = this.pigeonName + ' the Pigeon';
+            alert(this.pigeonName);
         });
     }
 }
